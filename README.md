@@ -7,8 +7,9 @@ For data analysis project
   
 - B: Classification, use differnet types of classifiers to build the machine learning-classification model
 to get the shot_made probability.
-    - logistic regression
-    - KNN 
+    
+    - logistic regression
+    - KNN
     - descision tree (random forest)
 - C: Compare performance of different classfiers and find reasons and analysis.
     - update it to kaggle to test.
