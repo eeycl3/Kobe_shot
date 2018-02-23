@@ -4,7 +4,15 @@ For data analysis project
 # Pitch Session
 - A: Conduct EDA (exploratory data analysis), for example, shooting hotspots diagram,
 2pts and 3pts shooting classification, shooting ordering by opponents, etc.   2.15- 2.21
-  
+ - 2pt, 3pt accuracy (bar graph)
+ - shot attempts (distribution graph)
+ - shooting accuracy(distribution graph)
+ - correlation features 
+    (1)play off vs shot made flag correlation
+    (2)shooting area vs shot made flag correlation
+    (3)opponent vs shot made flag correlation
+    (4)game date(month) vs shot made flag correlation
+ 
 - B: Classification, use differnet types of classifiers to build the machine learning-classification model
 to get the shot_made probability.   2.22 - 3.4
     
