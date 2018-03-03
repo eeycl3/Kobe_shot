@@ -25,13 +25,7 @@ print("Accuracy: %0.3f (+/- %0.3f)" % (Rf_scores.mean(), Rf_scores.std() * 2))
 id = pd.DataFrame(id)
 Rf_result = pd.DataFrame(Rf_result)
 Rf_submission = pd.concat([id, Rf_result], axis = 1)
-Rf_submission.to_csv('Rf_submission.csv')
-
-#file1 = open("RF_result.csv",'w',newline='')    # goal
-#writer1 = csv.writer(file1)
-#writer1.writerow(["shot_id", "shot_made_flag"])
-#for index in range(len(Rf_result)):
-#    writer1.writerow([id[index], Rf_result[index]])
+Rf_submission.to_csv('Rf_submission.csv', header=["shot_id", "shot_made_flag"], index=None)
 
 from sklearn.ensemble import AdaBoostClassifier
 clf_Adaboost = AdaBoostClassifier(clf)
@@ -40,9 +34,7 @@ ada_result = clf_Adaboost.predict_proba(predictSet)[:,1]
 ada_scores = cross_val_score(clf_Adaboost, trainingSet, y)
 print("Accuracy: %0.2f (+/- %0.2f)" % (ada_scores.mean(), ada_scores.std() * 2))
 
-file2 = open("ADA_result.csv",'w',newline='')    # goal
-writer2 = csv.writer(file2)
-writer2.writerow(["shot_id", "shot_made_flag"])
-for index in range(len(Rf_result)):
-    writer2.writerow([id[index], ada_result[index]])
-
+id = pd.DataFrame(id)
+ada_result = pd.DataFrame(ada_result)
+Rf_submission = pd.concat([id, ada_result], axis = 1)
+Rf_submission.to_csv('ada_submission.csv', header=["shot_id", "shot_made_flag"], index=None)
