@@ -17,8 +17,7 @@ trainingSet.drop(dropColumn, axis=1, inplace=True)
 X_train, X_test, y_train, y_test = train_test_split(trainingSet, y, test_size=0.33, random_state=42)
 
 scaler = StandardScaler(copy=True, with_mean=True, with_std=True)
-scaler.fit(X_train)
-X_train_norm = scaler.transform(X_train)
+X_train_norm = scaler.fit_transform(X_train)
 
 # RBF SVM
 max_score, max_c, max_gamma = 0, 0, 0
