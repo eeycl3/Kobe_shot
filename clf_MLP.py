@@ -1,39 +1,34 @@
 import pandas as pd
-import csv
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+
 
 trainingSet = pd.read_csv('trainingSet.csv', sep=',')
 y = trainingSet["shot_made_flag"]
 dropColumn = ['game_date_DT', 'secondsFromPeriodStart', 'shot_made_flag', 'shot_id']
 trainingSet.drop(dropColumn, axis=1, inplace=True)
 
+
+X_train, X_test, y_train, y_test = train_test_split(trainingSet, y, test_size=0.33, random_state=42)
+
 scaler = StandardScaler(copy=True, with_mean=True, with_std=True)
-scaler.fit(trainingSet)
-data_norm = scaler.transform(trainingSet)
+X_train_norm = scaler.fit_transform(X_train)
+X_test_norm = scaler.transform(X_test)
 
-# x_train, x_test, y_train, y_test = train_test_split(data_norm, y, test_size=0.3, random_state=42)
-clf = MLPClassifier(hidden_layer_sizes=(30,30,30))
-clf.fit(data_norm, y)
+max_test_score = 0
+for i in range(1, 200):
+    for j in range(1, 200):
+        clf_mlp = MLPClassifier(solver='sgd', hidden_layer_sizes=(i, j), random_state=0, activation='tanh')
+        clf_mlp.fit(X_train, y_train)
+        train_score = clf_mlp.score(X_train, y_train)
+        test_score = clf_mlp.score(X_test, y_test)
+        if test_score > max_test_score:
+            related_train_score = train_score
+            max_test_score = test_score
+            max_i = i
+            max_j = j
+            best_clf_mlp = clf_mlp
 
-predictSet = pd.read_csv("predictSet.csv")
-y_predictSet = predictSet['shot_made_flag']
-p_id = predictSet['shot_id']
+print("2 hidden layer",max_i, max_j, "train score: ", related_train_score, "test score: ", max_test_score)
 
-predictSet.drop(dropColumn, axis=1, inplace=True)
-
-scaler_pre = StandardScaler(copy=True, with_mean=True, with_std=True)
-scaler_pre.fit(predictSet)
-data_norm_pre = scaler_pre.transform(predictSet)
-
-svm_result = clf.predict_proba(data_norm_pre)[:, 1]
-svm_score = cross_val_score(clf, data_norm, y)
-
-print("Accuracy: %0.2f (+/- %0.2f)" % (svm_score.mean(), svm_score.std() * 2))
-
-file_svm = open("mlp_result.csv", 'w', newline='')
-writer_svm = csv.writer(file_svm)
-writer_svm.writerow(["shot_id", "shot_made_flag"])
-for row in range(len(svm_result)):
-    writer_svm.writerow([p_id[row], svm_result[row]])
