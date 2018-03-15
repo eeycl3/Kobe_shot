@@ -13,11 +13,13 @@ y = trainingSet["shot_made_flag"]
 dropColumn = ['game_date_DT', 'secondsFromPeriodStart', 'shot_made_flag', 'shot_id']
 trainingSet.drop(dropColumn, axis=1, inplace=True)
 
-scaler = StandardScaler(copy=True, with_mean=True, with_std=True)
-scaler.fit(trainingSet)
-data_norm = scaler.transform(trainingSet)
 
 X_train, X_test, y_train, y_test = train_test_split(data_norm, y, test_size=0.33, random_state=42)
+
+scaler = StandardScaler(copy=True, with_mean=True, with_std=True)
+scaler.fit(X_train)
+X_train_norm = scaler.transform(X_train)
+
 # RBF SVM
 max_score, max_c, max_gamma = 0, 0, 0
 c = [0.1, 0.5, 1, 2, 5, 10, 20, 50]
@@ -27,7 +29,7 @@ for i in c:
     for j in gamma:
         print("Hello from loop 2")
         clf_svm = SVC(C = i, gamma=j)
-        scores = cross_val_score(clf_svm, data_norm, y, cv=5)
+        scores = cross_val_score(clf_svm, X_train_norm, y_train, cv=5)
         score = scores.mean()
         if score > max_score:
             max_score = score
