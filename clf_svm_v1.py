@@ -1,0 +1,36 @@
+import pandas as pd
+import csv
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.model_selection import cross_val_score
+import numpy as np
+
+trainingSet = pd.read_csv('trainingSet.csv', sep=',')
+y = trainingSet["shot_made_flag"]
+dropColumn = ['game_date_DT', 'secondsFromPeriodStart', 'shot_made_flag', 'shot_id']
+trainingSet.drop(dropColumn, axis=1, inplace=True)
+
+scaler = StandardScaler(copy=True, with_mean=True, with_std=True)
+scaler.fit(trainingSet)
+data_norm = scaler.transform(trainingSet)
+
+
+# RBF SVM
+max_score, max_c, max_gamma = 0, 0, 0
+c = [0.1, 0.5, 1, 2, 5, 10, 20, 50]
+gamma = [0.01, 0.05, 0.1, 0.5, 1, 2, 5, 10]
+for i in c:
+    print("Hello from loop 1")
+    for j in gamma:
+        print("Hello from loop 2")
+        clf_svm = SVC(C = i, gamma=j)
+        scores = cross_val_score(clf_svm, data_norm, y, cv=5)
+        score = scores.mean()
+        if score > max_score:
+            max_score = score
+            max_c = i
+            max_gamma = j
+print("max_c: ", max_c, " max_gamma: ", max_gamma)
+
