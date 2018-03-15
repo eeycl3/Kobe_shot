@@ -6,6 +6,7 @@ from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.model_selection import cross_val_score
 import numpy as np
+from sklearn.model_selection import train_test_split
 
 trainingSet = pd.read_csv('trainingSet.csv', sep=',')
 y = trainingSet["shot_made_flag"]
