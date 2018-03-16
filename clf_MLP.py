@@ -9,7 +9,7 @@ y_train = y["shot_made_flag"]
 
 max_score = 0
 min_score_std = 999999999999999999999999
-param = 50
+param = 100
 matrix_mean_score = [[0] * param] * param
 matrix_score_std = [[0] * param] * param
 for i in range(1, param):
@@ -38,4 +38,8 @@ plt.savefig("MLP_param_figure.png")
 print("2 hidden layer",max_i, max_j,"score: ", max_score, "std: ", min_score_std)
 print(matrix_mean_score)
 print(matrix_score_std)
+
+f = open('MLP', 'w')
+f.write("2 hidden layer: " + str(max_i) + ' , ' + str(max_j) + " score: "+str(max_score) + str( ", std: ") + str( min_score_std))
+
 
