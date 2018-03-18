@@ -3,13 +3,13 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 
-X_train = pd.read_csv('X_train_rfe_20.csv', sep=',')
-y = pd.read_csv('y_train_rfe_20.csv', sep = ',')
+X_train = pd.read_csv('X_train_rfe_30.csv', sep=',')
+y = pd.read_csv('y_train.csv', sep = ',')
 y_train = y["shot_made_flag"]
 
 max_score = 0
 min_score_std = 999999999999999999999999
-param = 100
+param = 30
 matrix_mean_score = [[0] * param] * param
 matrix_score_std = [[0] * param] * param
 for i in range(1, param):
@@ -25,8 +25,6 @@ for i in range(1, param):
             max_i = i
             max_j = j
             best_clf_mlp = clf_mlp
-
-plt.figure()
 im=plt.imshow(matrix_mean_score)
 plt.title("MLP accuracy score with different units in 2 hidden layer")
 plt.colorbar(im)
@@ -38,8 +36,4 @@ plt.savefig("MLP_param_figure.png")
 print("2 hidden layer",max_i, max_j,"score: ", max_score, "std: ", min_score_std)
 print(matrix_mean_score)
 print(matrix_score_std)
-
-f = open('MLP', 'w')
-f.write("2 hidden layer: " + str(max_i) + ' , ' + str(max_j) + " score: "+str(max_score) + str( ", std: ") + str( min_score_std))
-
 
