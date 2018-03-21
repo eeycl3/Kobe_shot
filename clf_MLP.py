@@ -10,8 +10,8 @@ y_train = y["shot_made_flag"]
 max_score = 0
 min_score_std = 999999999999999999999999
 param = 30
-matrix_mean_score = [[0] * param] * param
-matrix_score_std = [[0] * param] * param
+matrix_mean_score = [[0 for i in range(param)] for i in range(param)]
+matrix_score_std = [[0 for i in range(param)] for i in range(param)]
 for i in range(1, param):
     for j in range(1, param):
         clf_mlp = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(i, j), random_state=0, activation='tanh')
