@@ -34,3 +34,4 @@ for i in c:
             max_c = i
             max_gamma = j
 print("max_c: ", max_c, " max_gamma: ", max_gamma)
+print(scores_mean)
