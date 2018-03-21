@@ -7,11 +7,15 @@ from sklearn.calibration import CalibratedClassifierCV
 from sklearn.model_selection import cross_val_score
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.manifold import Isomap
 
 X_train = pd.read_csv('X_train_rfe_20.csv', sep=',')
 X_test = pd.read_csv('X_test_rfe_20.csv', sep=',')
 y_train = pd.read_csv('y_train.csv', sep=',')
 y_test = pd.read_csv('y_test.csv', sep=',')
+
+isomap = Isomap(n_neighbors=5, n_components=2)
+isomap_X_train = isomap.fit_transform(X_train)
 
 # RBF SVM
 max_score, max_c, max_gamma = 0, 0, 0
@@ -22,7 +26,7 @@ scores_mean = list()
 for i in c:
     for j in gamma: 
         clf_svm = SVC(C = i, gamma=j)
-        scores = cross_val_score(clf_svm, X_train, y_trainy_train.values.ravel(), cv=5)
+        scores = cross_val_score(clf_svm, isomap_X_train, y_train.values.ravel())
         score = scores.mean()
         scores_mean.append(score)
         if score > max_score:
@@ -30,6 +34,3 @@ for i in c:
             max_c = i
             max_gamma = j
 print("max_c: ", max_c, " max_gamma: ", max_gamma)
-
-
-
