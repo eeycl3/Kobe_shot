@@ -36,6 +36,7 @@ plt.yticks(y, sigma)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
+plt.show()
 
 
 # lle_svm_fea20
@@ -71,7 +72,7 @@ plt.yticks(y, sigma)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
-
+plt.show()
 
 # isomap_svm_fea20
 # max_c:  50  max_gamma:  5000  max_sigma:  0.01  max_score:  0.5719099766288772  std:  0.006811444809206055
@@ -106,6 +107,7 @@ plt.yticks(y, sigma)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
+plt.show()
 
 
 # pca_svm_fea20
@@ -141,6 +143,7 @@ plt.yticks(y, sigma)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
+plt.show()
 
 
 # tsne_svm_fea20
