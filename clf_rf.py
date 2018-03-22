@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 
-X_train = pd.read_csv('X_train_rfe_40.csv', sep=',')
+X_train = pd.read_csv('X_train_rfe_20.csv', sep=',')
 y = pd.read_csv('y_train.csv', sep = ',')
 y_train = y["shot_made_flag"]
 
@@ -27,3 +27,7 @@ for i in range(1, param):
             best_clf_mlp = clf_mlp
 print("n_estimators: ",max_i, "max_depth: ",max_j,"score: ", max_score, "std: ", min_score_std)
 print(matrix_mean_score)
+
+# 20 feas: param = 30
+# 30 feas: param = 30
+# 40 feas: param = 40
