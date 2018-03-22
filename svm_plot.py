@@ -25,14 +25,14 @@ matrix = [[0.6778563708792864, 0.6778563708792864, 0.6778563708792864, 0.6778563
 
 plt.title("20 features svm parameters vs accuracy scores")
 plt.imshow(matrix, cmap="hot", vmax=0.68, vmin=0.677)
-plt.xlabel("C")
-plt.ylabel("sigma")
+plt.xlabel("sigma")
+plt.ylabel("C")
 
 x = np.array([i for i in range(8)])
 y = np.array([i for i in range(8)])
 
-plt.xticks(x, c)
-plt.yticks(y, sigma)
+plt.xticks(x, sigma)
+plt.yticks(y, c)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
@@ -61,14 +61,14 @@ matrix = [[0.6297628939338349, 0.6082130477563242, 0.5613963623825154, 0.5537871
 plt.title("20 features lle_svm parameters vs accuracy scores")
 plt.imshow(matrix, cmap="hot", vmax=0.65, vmin=0.55)
 
-plt.xlabel("C")
-plt.ylabel("sigma")
+plt.xlabel("sigma")
+plt.ylabel("C")
 
 x = np.array([i for i in range(8)])
 y = np.array([i for i in range(8)])
 
-plt.xticks(x, c)
-plt.yticks(y, sigma)
+plt.xticks(x, sigma)
+plt.yticks(y, c)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
@@ -96,14 +96,14 @@ matrix = [[0.569993175299333, 0.5537871784582801, 0.5537871784582801, 0.55378717
 plt.title("20 features isomap_svm parameters vs accuracy scores")
 plt.imshow(matrix, cmap="hot", vmax=0.58, vmin=0.55)
 
-plt.xlabel("C")
-plt.ylabel("sigma")
+plt.xlabel("sigma")
+plt.ylabel("C")
 
 x = np.array([i for i in range(8)])
 y = np.array([i for i in range(8)])
 
-plt.xticks(x, c)
-plt.yticks(y, sigma)
+plt.xticks(x, sigma)
+plt.yticks(y, c)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
@@ -132,14 +132,14 @@ matrix = [[0.6777412421149563, 0.677683159986827, 0.677683159986827, 0.672339290
 plt.title("20 features pca_svm parameters vs accuracy scores")
 plt.imshow(matrix, cmap="hot", vmax=0.68, vmin=0.6)
 
-plt.xlabel("C")
-plt.ylabel("sigma")
+plt.xlabel("sigma")
+plt.ylabel("C")
 
 x = np.array([i for i in range(8)])
 y = np.array([i for i in range(8)])
 
-plt.xticks(x, c)
-plt.yticks(y, sigma)
+plt.xticks(x, sigma)
+plt.yticks(y, c)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
@@ -168,14 +168,14 @@ matrix = [[0.6668217311701192, 0.6669379055487422, 0.6669959876768714, 0.6669959
 plt.title("20 features tsne_svm parameters vs accuracy scores")
 plt.imshow(matrix, cmap="hot", vmax=0.68, vmin=0.66)
 
-plt.xlabel("C")
-plt.ylabel("sigma")
+plt.xlabel("sigma")
+plt.ylabel("C")
 
 x = np.array([i for i in range(8)])
 y = np.array([i for i in range(8)])
 
-plt.xticks(x, c)
-plt.yticks(y, sigma)
+plt.xticks(x, sigma)
+plt.yticks(y, c)
 
 ax = plt.colorbar()
 ax.set_label("accuracy score")
