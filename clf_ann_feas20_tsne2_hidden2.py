@@ -25,7 +25,7 @@ for i in num_1st:
       for train, test in kfold.split(tsne_X_train, y_train):
           # create model
           model = Sequential()
-          model.add(Dense(i, input_dim=20, activation='relu'))
+          model.add(Dense(i, input_dim=tsne_X_train.shape[1], activation='relu'))
           model.add(Dense(j, activation='relu'))
           model.add(Dense(1, activation='sigmoid'))
           # compile model
