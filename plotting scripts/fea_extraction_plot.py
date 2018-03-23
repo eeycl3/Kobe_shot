@@ -8,7 +8,7 @@ from sklearn.manifold import TSNE
 
 
 X_train = pd.read_csv('X_train_rfe_40.csv', sep=',')
-X_test = pd.read_csv('X_test_rfe_20.csv', sep=',')
+X_test = pd.read_csv('X_test_rfe_40.csv', sep=',')
 y_train = pd.read_csv('y_train.csv', sep=',')
 y_test = pd.read_csv('y_test.csv', sep=',')
 y_train= y_train["shot_made_flag"]
