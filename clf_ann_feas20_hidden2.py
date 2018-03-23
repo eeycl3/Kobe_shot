@@ -27,7 +27,7 @@ for i in num_1st:
           # compile model
           model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
           # fit the model
-          model.fit(X_train[train], y_train[train], epochs=100, batch_size=10)
+          model.fit(X_train[train], y_train[train], epochs=50, batch_size=10)
           # evaluate the model
           scores = model.evaluate(X_train[test], y_train[test])
           cvscores.append(scores[1])
