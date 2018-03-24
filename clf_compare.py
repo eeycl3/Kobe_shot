@@ -126,7 +126,7 @@ for i in range(20):
     train_time_svm_fea30.append(stop - start)
 
     start = timeit.default_timer()
-    svm_pred = svm_fea30.predict(X_test_20)
+    svm_pred = svm_fea30.predict(X_test_30)
     stop = timeit.default_timer()
     classification_time_svm_fea30.append(stop - start)
 
