@@ -14,9 +14,9 @@ matrix_mean_score = [[0 for i in range(param)] for i in range(param)]
 matrix_score_std = [[0 for i in range(param)] for i in range(param)]
 for i in range(1, param):
     for j in range(1, param):
-        clf_mlp = RandomForestClassifier(n_estimators= i , max_depth=j , random_state=0)
-        clf_mlp.fit(X_train, y_train)
-        scores = cross_val_score(clf_mlp, X_train, y_train)
+        clf_rf = RandomForestClassifier(n_estimators= i , max_depth=j , random_state=0)
+        clf_rf.fit(X_train, y_train)
+        scores = cross_val_score(clf_rf, X_train, y_train)
         matrix_mean_score[i][j] = scores.mean()
         matrix_score_std[i][j] = scores.std()
         if scores.mean() > max_score:
@@ -24,7 +24,7 @@ for i in range(1, param):
             min_score_std = scores.std()
             max_i = i
             max_j = j
-            best_clf_mlp = clf_mlp
+            best_clf_rf = clf_rf
 print("n_estimators: ",max_i, "max_depth: ",max_j,"score: ", max_score, "std: ", min_score_std)
 print(matrix_mean_score)
 
