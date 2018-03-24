@@ -6,7 +6,6 @@ from sklearn.metrics import accuracy_score, precision_score,recall_score,f1_scor
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
 
 
 
@@ -26,10 +25,6 @@ pca = PCA(n_components=2)
 pca_X_train_20 = pca.fit_transform(X_train_20)
 pca_X_test_20 = pca.transform(X_test_20)
 
-tsne = TSNE(n_components=2)
-tsne_X_train_20 = tsne.fit_transform(X_train_20)
-tsne_X_test_20 = tsne.fit_transform(X_test_20)
-
 train_time_svm_fea20=[]
 train_time_svm_fea30=[]
 train_time_svm_fea40=[]
@@ -37,7 +32,6 @@ train_time_rf_fea20=[]
 train_time_rf_fea30=[]
 train_time_rf_fea40=[]
 train_time_svm_pca=[]
-train_time_svm_tsne2=[]
 train_time_ann_hidden2=[]
 
 
@@ -48,7 +42,6 @@ classification_time_rf_fea20=[]
 classification_time_rf_fea30=[]
 classification_time_rf_fea40=[]
 classification_time_svm_pca=[]
-classification_time_svm_tsne2=[]
 classification_time_ann_hidden2=[]
 
 acu_svm_fea20=[]
@@ -58,7 +51,6 @@ acu_rf_fea20=[]
 acu_rf_fea30=[]
 acu_rf_fea40=[]
 acu_svm_pca=[]
-acu_svm_tsne2=[]
 acu_ann_hidden2=[]
 
 pre_svm_fea20=[]
@@ -68,7 +60,6 @@ pre_rf_fea20=[]
 pre_rf_fea30=[]
 pre_rf_fea40=[]
 pre_svm_pca=[]
-pre_svm_tsne2=[]
 pre_ann_hidden2=[]
 
 rec_svm_fea20=[]
@@ -78,7 +69,6 @@ rec_rf_fea20=[]
 rec_rf_fea30=[]
 rec_rf_fea40=[]
 rec_svm_pca=[]
-rec_svm_tsne2=[]
 rec_ann_hidden2=[]
 
 f1_svm_fea20=[]
@@ -88,7 +78,6 @@ f1_rf_fea20=[]
 f1_rf_fea30=[]
 f1_rf_fea40=[]
 f1_svm_pca=[]
-f1_svm_tsne2=[]
 f1_ann_hidden2=[]
 
 
@@ -263,28 +252,3 @@ for i in range(20):
     f1 = f1_score(y_test, svm_pred)
     f1_svm_pca.append(f1)
 
-    # svm_fea_tsne2 20
-    svm_pca = SVC(C=0.5, gamma=0.005)
-    start = timeit.default_timer()
-    svm_pca.fit(tsne_X_train_20, y_train)
-    stop = timeit.default_timer()
-    train_time_svm_pca.append(stop - start)
-
-    start = timeit.default_timer()
-    svm_pred = svm_pca.predict(tsne_X_test_20)
-    stop = timeit.default_timer()
-    classification_time_svm_pca.append(stop - start)
-
-    score = accuracy_score(y_test, svm_pred)
-    acu_svm_pca.append(score)
-
-    pre = precision_score(y_test, svm_pred)
-    pre_svm_pca.append(pre)
-
-    rec = recall_score(y_test, svm_pred)
-    rec_svm_pca.append(rec)
-
-    f1 = f1_score(y_test, svm_pred)
-    f1_svm_pca.append(f1)
-
-print(acu_svm_tsne2)
