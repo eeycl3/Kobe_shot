@@ -6,7 +6,8 @@ from sklearn.metrics import accuracy_score, precision_score,recall_score,f1_scor
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
-
+from keras.models import Sequential
+from keras.layers import Dense
 
 
 X_train_20 = pd.read_csv('X_train_rfe_20.csv', sep=',')
@@ -80,9 +81,44 @@ f1_rf_fea40=[]
 f1_svm_pca=[]
 f1_ann_hidden2=[]
 
+# ann feas20 hidden2
+
+# ann model creation
+model = Sequential()
+model.add(Dense(10, input_dim=20, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+# compile model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+for i in range(3):
+    # fit the model
+    start = timeit.default_timer()
+    model.fit(X_train_20, y_train, epochs=50, batch_size=10)
+    stop = timeit.default_timer()
+    train_time_ann_hidden2.append(stop - start)
+    # evaluate the model
+    start = timeit.default_timer()
+    predictions = model.predict(X_test_20)
+    stop = timeit.default_timer()
+    classification_time_ann_hidden2.append(stop - start)
+    # round predictions
+    ann_pred = [round(x[0]) for x in predictions]
+
+    score = accuracy_score(y_test, ann_pred)
+    acu_ann_hidden2.append(score)
+
+    pre = precision_score(y_test, ann_pred)
+    pre_ann_hidden2.append(pre)
+
+    rec = recall_score(y_test, ann_pred)
+    rec_ann_hidden2.append(rec)
+
+    f1 = f1_score(y_test, ann_pred)
+    f1_ann_hidden2.append(f1)
 
 for i in range(20):
-
+    
     #svm_fea20
     svm_fea20 = clf_svm = SVC(C = 10, gamma=0.02)
     start = timeit.default_timer()
