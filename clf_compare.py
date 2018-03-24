@@ -242,30 +242,6 @@ for i in range(20):
     # svm_fea_pca 20
     svm_pca = SVC(C=0.5, gamma=200)
     start = timeit.default_timer()
-    svm_pca.fit(X_train_20, y_train)
-    stop = timeit.default_timer()
-    train_time_svm_pca.append(stop - start)
-
-    start = timeit.default_timer()
-    svm_pred = svm_pca.predict(X_test_20)
-    stop = timeit.default_timer()
-    classification_time_svm_pca.append(stop - start)
-
-    score = accuracy_score(y_test, svm_pred)
-    acu_svm_pca.append(score)
-
-    pre = precision_score(y_test, svm_pred)
-    pre_svm_pca.append(pre)
-
-    rec = recall_score(y_test, svm_pred)
-    rec_svm_pca.append(rec)
-
-    f1 = f1_score(y_test, svm_pred)
-    f1_svm_pca.append(f1)
-
-    # svm_fea_pca 20
-    svm_pca = SVC(C=0.5, gamma=0.005)
-    start = timeit.default_timer()
     svm_pca.fit(pca_X_train_20, y_train)
     stop = timeit.default_timer()
     train_time_svm_pca.append(stop - start)
@@ -310,3 +286,5 @@ for i in range(20):
 
     f1 = f1_score(y_test, svm_pred)
     f1_svm_pca.append(f1)
+
+print(acu_svm_tsne2)
