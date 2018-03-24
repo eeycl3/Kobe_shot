@@ -214,7 +214,7 @@ for i in range(20):
     rec_rf_fea20.append(rec)
 
     f1 = f1_score(y_test, rf_pred)
-    f1_svm_fea20.append(f1)
+    f1_rf_fea20.append(f1)
 
     #rf_fea30
     rf_fea30 = RandomForestClassifier(random_state=0, n_estimators=25, max_depth=7)
@@ -226,7 +226,7 @@ for i in range(20):
     start = timeit.default_timer()
     rf_pred = rf_fea30.predict(X_test_30)
     stop = timeit.default_timer()
-    classification_time_rf_fea20.append(stop - start)
+    classification_time_rf_fea30.append(stop - start)
 
     score = accuracy_score(y_test, rf_pred)
     acu_rf_fea30.append(score)
@@ -238,7 +238,7 @@ for i in range(20):
     rec_rf_fea30.append(rec)
 
     f1 = f1_score(y_test, rf_pred)
-    f1_svm_fea30.append(f1)
+    f1_rf_fea30.append(f1)
 
     # rf_fea40
     rf_fea40 = RandomForestClassifier(random_state=0, n_estimators=32, max_depth=10)
@@ -262,7 +262,7 @@ for i in range(20):
     rec_rf_fea40.append(rec)
 
     f1 = f1_score(y_test, rf_pred)
-    f1_svm_fea40.append(f1)
+    f1_rf_fea40.append(f1)
 
     # svm_fea_pca 20
     svm_pca = SVC(C=0.5, gamma=200)
