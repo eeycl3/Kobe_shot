@@ -288,3 +288,20 @@ for i in range(20):
     f1 = f1_score(y_test, svm_pred)
     f1_svm_pca.append(f1)
 
+value = [[np.mean(train_time_svm_fea20), np.mean(train_time_svm_fea30), np.mean(train_time_svm_fea40), np.mean(train_time_rf_fea20), np.mean(train_time_rf_fea30), np.mean(train_time_rf_fea40), np.mean(train_time_svm_pca), np.mean(train_time_ann_hidden2)],
+         [np.mean(classification_time_svm_fea20), np.mean(classification_time_svm_fea30),
+          np.mean(classification_time_svm_fea40), np.mean(classification_time_rf_fea20),
+          np.mean(classification_time_rf_fea30), np.mean(classification_time_rf_fea40),
+          np.mean(classification_time_svm_pca),
+          np.mean(classification_time_ann_hidden2)],
+         [np.mean(acu_svm_fea20), np.mean(acu_svm_fea30), np.mean(acu_svm_fea40), np.mean(acu_rf_fea20),
+          np.mean(acu_rf_fea30), np.mean(acu_rf_fea40), np.mean(acu_svm_pca), np.mean(acu_ann_hidden2)],
+         [np.mean(pre_svm_fea20), np.mean(pre_svm_fea30), np.mean(pre_svm_fea40), np.mean(pre_rf_fea20),
+          np.mean(pre_rf_fea30), np.mean(pre_rf_fea40), np.mean(pre_svm_pca), np.mean(pre_ann_hidden2)],
+         [np.mean(rec_svm_fea20), np.mean(rec_svm_fea30), np.mean(rec_svm_fea40), np.mean(rec_rf_fea20),
+          np.mean(rec_rf_fea30), np.mean(rec_rf_fea40), np.mean(rec_svm_pca), np.mean(rec_ann_hidden2)]
+         [np.mean(f1_svm_fea20), np.mean(f1_svm_fea30), np.mean(f1_svm_fea40), np.mean(f1_rf_fea20),
+          np.mean(f1_rf_fea30), np.mean(f1_rf_fea40), np.mean(f1_svm_pca), np.mean(f1_ann_hidden2)]
+        ]
+print(value)
+
