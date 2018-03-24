@@ -299,7 +299,7 @@ value = [[np.mean(train_time_svm_fea20), np.mean(train_time_svm_fea30), np.mean(
          [np.mean(pre_svm_fea20), np.mean(pre_svm_fea30), np.mean(pre_svm_fea40), np.mean(pre_rf_fea20),
           np.mean(pre_rf_fea30), np.mean(pre_rf_fea40), np.mean(pre_svm_pca), np.mean(pre_ann_hidden2)],
          [np.mean(rec_svm_fea20), np.mean(rec_svm_fea30), np.mean(rec_svm_fea40), np.mean(rec_rf_fea20),
-          np.mean(rec_rf_fea30), np.mean(rec_rf_fea40), np.mean(rec_svm_pca), np.mean(rec_ann_hidden2)]
+          np.mean(rec_rf_fea30), np.mean(rec_rf_fea40), np.mean(rec_svm_pca), np.mean(rec_ann_hidden2)],
          [np.mean(f1_svm_fea20), np.mean(f1_svm_fea30), np.mean(f1_svm_fea40), np.mean(f1_rf_fea20),
           np.mean(f1_rf_fea30), np.mean(f1_rf_fea40), np.mean(f1_svm_pca), np.mean(f1_ann_hidden2)]
         ]
