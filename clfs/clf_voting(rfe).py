@@ -33,7 +33,7 @@ trainingSet = scaler.fit_transform(trainingSet)
 
 
 estimator = RandomForestClassifier()
-selector = RFE(estimator, 40, step = 1)
+selector = RFE(estimator, 20, step = 1)
 selector = selector.fit(trainingSet, y)
 X_Rfe = selector.transform(trainingSet)
 
