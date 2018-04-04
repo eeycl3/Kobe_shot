@@ -12,8 +12,8 @@ y_test = pd.read_csv('y_test.csv', sep=',').as_matrix()
 
 kfold = StratifiedKFold(n_splits=3, shuffle=True, random_state=7)
 max_score, max_i, max_j = 0, 0, 0
-num_1st = [2,5]
-num_2nd = [2,5]
+num_1st = [2,5,10]
+num_2nd = [2,5,10]
 scorelist = []
 for i in num_1st:
     for j in num_2nd:
