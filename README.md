@@ -1,6 +1,8 @@
 For data analysis project
 # Kobe_shot
 
+####**To make it more convenient, we put the relevant files in the same folder. If you need to run the entire code, place the code in the top-level repository.**
+
 # Pitch Session
 - A: Conduct EDA (exploratory data analysis), for example, shooting hotspots diagram,
 2pts and 3pts shooting classification, shooting ordering by opponents, etc.   2.15- 2.21
@@ -12,7 +14,7 @@ For data analysis project
     (2)shooting area vs shot made flag correlation
     (3)opponent vs shot made flag correlation
     (4)game date(month) vs shot made flag correlation
- 
+
 - B: Classification, use differnet types of classifiers to build the machine learning-classification model
 to get the shot_made probability.   2.22 - 3.4
     
