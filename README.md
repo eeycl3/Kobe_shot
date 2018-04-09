@@ -1,4 +1,3 @@
-For data analysis project
 # Kobe_shot
 
 #### To make it more convenient, we put the relevant files in the same folder. If you need to run the entire code, place the code in the top-level repository.**
