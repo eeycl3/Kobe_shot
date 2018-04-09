@@ -1,4 +1,4 @@
-# Kobe_shot
+# Kobe_shot (top 30%)
 
 #### To make it more convenient, we put the relevant files in the same folder. If you need to run the entire code, place the code in the top-level repository.**
 
