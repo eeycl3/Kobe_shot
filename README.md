@@ -1,27 +1,17 @@
 For data analysis project
 # Kobe_shot
 
-####**To make it more convenient, we put the relevant files in the same folder. If you need to run the entire code, place the code in the top-level repository.**
+#### To make it more convenient, we put the relevant files in the same folder. If you need to run the entire code, place the code in the top-level repository.**
 
-# Pitch Session
-- A: Conduct EDA (exploratory data analysis), for example, shooting hotspots diagram,
-2pts and 3pts shooting classification, shooting ordering by opponents, etc.   2.15- 2.21
- - 2pt, 3pt accuracy (bar graph)
- - shot attempts (distribution graph)
- - shooting accuracy(distribution graph)
- - correlation features 
-    (1)play off vs shot made flag correlation
-    (2)shooting area vs shot made flag correlation
-    (3)opponent vs shot made flag correlation
-    (4)game date(month) vs shot made flag correlation
+### Description
 
-- B: Classification, use differnet types of classifiers to build the machine learning-classification model
-to get the shot_made probability.   2.22 - 3.4
-    
-    - logistic regression
-    - KNN
-    - descision tree (random forest)
-- C: Compare performance of different classfiers and find reasons and analysis.
-    - update it to kaggle to test. 2.22 - 3.4 
-- D: Build machine learning model by using ANN (artificial neural network) and evaluate its performance 3.4 - 3.9
-- E: Time series modelling and analysis of Kobe's shot performance over years, for example, shot made percentage, 2pts #, or 3pts #.   3.10 - 3.15
+Throughout Kobe's long career, he won numerous honors. At the same time, NBA also recorded all the data of his shot attempts. In this project, Kaggle randomly picks out 1/3 of the data as a test set. We used the remaining 2/3 data as the training set to predict on the test set and came up with the final model. We implemented recursive feature elimination (RFE) method and a series of feature extraction methods to pick out the most important features, and then utilized support vector machine, random forest, artificial neural networks algorithms, as well as voting to generate a comprehensive classification model. Extensive comparative analysis regarding the feature engineering methods and classification models were also delivered. 
+
+### Goal and method
+
+The final goal of this project is a binary classification, and throughout the process, we are aiming to mainly exploring the feature engineering techniques and several classification algorithms. We used recursive feature elimination(RFE) to do feature selection, implemented PCA, LLE, ISOMAP, TSNE to realize feature extraction part, and used SVM, random forest, ANNs, as well as voting method to do classification.
+
+### Conclusion and Discussion
+
+Based on the result we can find out that the pattern existing in the classification is weak. Shooting accuracy is highly influenced by random human factors. That is the reason why the accuracy of our results is around 67\%. In this project, we can conclude that using different algorithms does not have much effect on the accuracy of the results, but the time spent by the different algorithms themselves is quite different. For SVM classifier, it has the best accuracy among all the algorithms but it takes a long time for classification at the same time. Regarding this situation, it can be concluded that SVM is suitable for low dimensional and small dataset; For random forest classifier, it has relatively better accuracy with less classification time. In addition, it avoids overfitting problems. In this case, if classification time is what we need to prioritize, random forest can be considered as the best solution. For ANN, it takes the longest time in training but less time in predicting. In this situation, it may not be suitable for this classification problem because its long training time and mediocre accuracy performance.
+
